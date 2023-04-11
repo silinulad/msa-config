@@ -1,0 +1,50 @@
+server:
+  port: 8899
+  error:
+    include-message: always
+    include-binding-errors: always
+
+logging:
+  level:
+    org.springframework.cloud: DEBUG
+    org.springframework.retry: TRACE
+  file:
+    name: logs/resources-processor.log
+  logback:
+    rolling-policy:
+      max-file-size: 50MB
+      max-history: 10
+
+resource:
+  host: ${GATEWAY_HOST:http://localhost:8000}
+  path: /resources/{0}
+  content-type: "audio/mpeg"
+
+song:
+  host: ${GATEWAY_HOST:http://localhost:8000}
+  path: /songs
+
+spring:
+  rabbitmq:
+    username: ${RABBITMQ_DEFAULT_USER:rmuser}
+    password: ${RABBITMQ_DEFAULT_PASS:rmpassword}
+  cloud:
+    stream:
+      function.definition: save;remove
+      bindings:
+        save-in-0:
+          destination: uploaded
+        remove-in-0:
+          destination: removed
+  application:
+    name: resource-processor
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+    service-url:
+      defaultZone: ${DISCOVERY_SERVER_URL:http://localhost:8761/eureka}
+
+feign:
+  enabled: true
