@@ -38,8 +38,6 @@ spring:
           destination: removed
   application:
     name: resource-processor
-  #config:
-    #import: optional:configserver:http://localhost:8585
 
 eureka:
   client:
@@ -47,9 +45,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: ${DISCOVERY_SERVER_URL:http://localhost:8761/eureka}
-
-feign:
-  enabled: true
   
 management:
   endpoints:
