@@ -40,7 +40,7 @@ spring:
     name: resource-processor
 
 new:
-  property: 1
+  property: 2
 
 eureka:
   client:
