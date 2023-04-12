@@ -4,9 +4,6 @@ server:
     include-message: always
     include-binding-errors: always
 
-foo:
-  bar: true
-
 logging:
   level:
     org.springframework.cloud: DEBUG
@@ -20,7 +17,7 @@ logging:
 
 resource:
   host: ${GATEWAY_HOST:http://localhost:8000}
-  path: /resources/{0}
+  path: /resources/{0}/go
   content-type: "audio/mpeg"
 
 song:
