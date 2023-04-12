@@ -4,6 +4,9 @@ server:
     include-message: always
     include-binding-errors: always
 
+foo:
+  bar: true
+
 logging:
   level:
     org.springframework.cloud: DEBUG
