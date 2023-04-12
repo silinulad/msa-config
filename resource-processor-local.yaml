@@ -17,7 +17,7 @@ logging:
 
 resource:
   host: ${GATEWAY_HOST:http://localhost:8000}
-  path: /resources/{0}/go
+  path: /resources/{0}
   content-type: "audio/mpeg"
 
 song:
