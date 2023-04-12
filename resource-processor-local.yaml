@@ -39,7 +39,7 @@ spring:
   application:
     name: resource-processor
   config:
-    import: configserver:
+    import: optional:configserver:http://localhost:8585
 
 eureka:
   client:
