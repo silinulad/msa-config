@@ -38,8 +38,8 @@ spring:
           destination: removed
   application:
     name: resource-processor
-  config:
-    import: optional:configserver:http://localhost:8585
+  #config:
+    #import: optional:configserver:http://localhost:8585
 
 eureka:
   client:
