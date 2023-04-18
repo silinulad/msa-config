@@ -39,9 +39,6 @@ spring:
   application:
     name: resource-processor
 
-new:
-  property: 2
-
 eureka:
   client:
     register-with-eureka: false
