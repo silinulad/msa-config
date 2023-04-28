@@ -7,7 +7,7 @@ server:
 logging:
   level:
     org.springframework.cloud: DEBUG
-    org.springframework.retry: TRACE
+    org.springframework.retry: DEBUG
   file:
     name: logs/resources-processor.log
   logback:
@@ -24,6 +24,9 @@ song:
   host: ${GATEWAY_HOST:http://localhost:8000}
   path: /songs
 
+#############
+# Messaging #
+#############
 spring:
   rabbitmq:
     username: ${RABBITMQ_DEFAULT_USER:rmuser}
@@ -46,8 +49,26 @@ eureka:
     service-url:
       defaultZone: ${DISCOVERY_SERVER_URL:http://localhost:8761/eureka}
   
+############
+# Actuator #
+############
 management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
   endpoints:
     web:
       exposure:
         include: "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    distribution:
+      percentiles-histogram:
+        "[http.server.requests]": true
+  tracing:
+    sampling:
+      probability: 1.0
