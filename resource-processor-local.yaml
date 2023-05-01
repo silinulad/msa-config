@@ -40,8 +40,6 @@ spring:
     opentracing:
       enabled: true
   zipkin:
-    sender:
-      type: web
     base-url: http://${ZIPKIN_HOST:localhost}:9411/
 
 eureka:
