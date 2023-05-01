@@ -6,14 +6,7 @@ server:
 
 logging:
   level:
-    org.springframework.cloud: DEBUG
-    org.springframework.retry: DEBUG
-  file:
-    name: logs/resources-processor.log
-  logback:
-    rolling-policy:
-      max-file-size: 50MB
-      max-history: 10
+    org.springframework: DEBUG
 
 resource:
   host: ${GATEWAY_HOST:http://localhost:8000}
@@ -41,6 +34,15 @@ spring:
           destination: removed
   application:
     name: resource-processor
+  sleuth:
+    propagation:
+      type: B3,W3C
+    opentracing:
+      enabled: true
+  zipkin:
+    sender:
+      type: web
+    base-url: http://${ZIPKIN_HOST:localhost}:9411/
 
 eureka:
   client:
